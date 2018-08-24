@@ -54,13 +54,13 @@ static void convertSeed6(std::vector<CAddress>& vSeedsOut, const SeedSpec6* data
 // + Contains no strange transactions
 static Checkpoints::MapCheckpoints mapCheckpoints =
     boost::assign::map_list_of
-    (0, uint256("00000dfdec6a9190b26520e93ef5eba15a82646a47ddf8fb5be4477a836467ee"));
+    (0, uint256(""));
 static const Checkpoints::CCheckpointData data = {
     &mapCheckpoints,
-    1524873600, // * UNIX timestamp of last checkpoint block
+    , // * UNIX timestamp of last checkpoint block
     0,          // * total number of transactions between genesis and last checkpoint
                 //   (the tx=... number in the SetBestChain debug.log lines)
-    2000        // * estimated number of transactions per day after checkpoint
+            // * estimated number of transactions per day after checkpoint
 };
 
 static Checkpoints::MapCheckpoints mapCheckpointsTestnet =
@@ -91,11 +91,11 @@ public:
          * The characters are rarely used upper ASCII, not valid as UTF-8, and produce
          * a large 4-byte int at any alignment.
          */
-        pchMessageStart[0] = 0x6e;
-        pchMessageStart[1] = 0x72;
+        pchMessageStart[0] = 0x6f;
+        pchMessageStart[1] = 0x7a;
         pchMessageStart[2] = 0x4f;
         pchMessageStart[3] = 0x5a;
-        vAlertPubKey = ParseHex("040d75796902e3eda97815d744328237872309a95b42a74b22d7580e56b086fbc19ae1d6ef30c9e27d060c9c48692a663b9a321161e19f853ca6a6499cba7d17f6");
+        vAlertPubKey = ParseHex("0486bce1bac0d543f104cbff2bd23680056a3b9ea05e1137d2ff90eeb5e08472eb500322593a2cb06fbf8297d7beb6cd30cb90f98153b5b7cce1493749e41e0284");
         nDefaultPort = 39797;
         bnProofOfWorkLimit = ~uint256(0) >> 20; // LightPayCoin starting difficulty is 1 / 2^12
         nSubsidyHalvingInterval = 210000;
@@ -123,7 +123,7 @@ public:
          *     CTxOut(nValue=50.00000000, scriptPubKey=0xA9037BAC7050C479B121CF)
          *   vMerkleTree: e0028e
          */
-        const char* pszTimestamp = "If you read this line in our code, then you are a genius, but why do you need it?!";
+        const char* pszTimestamp = "Bear Coin TheBest";
         CMutableTransaction txNew;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
@@ -134,16 +134,16 @@ public:
         genesis.hashPrevBlock = 0;
         genesis.hashMerkleRoot = genesis.BuildMerkleTree();
         genesis.nVersion = 1;
-        genesis.nTime = 1524873600;
+        genesis.nTime = 1535137088;
         genesis.nBits = 0x1e0ffff0;
-        genesis.nNonce = 2394236;
+        genesis.nNonce = 20827432;
 
         hashGenesisBlock = genesis.GetHash();
-        assert(hashGenesisBlock == uint256("00000dfdec6a9190b26520e93ef5eba15a82646a47ddf8fb5be4477a836467ee"));
-        assert(genesis.hashMerkleRoot == uint256("98a0c0dc8214278a8a27ce9d7ca4107dd7cd6787ea6001d3d6c1a7b764098570"));
+        assert(hashGenesisBlock == uint256("00000bad98cee816fe5e6b43da4c449c194b7f6beddabba76ee22b9929abbae4"));
+        assert(genesis.hashMerkleRoot == uint256("c5d198aabcbd9a7bfa6e885e8d781c234656fc4311699e681ab1222e89557653"));
 
-        vSeeds.push_back(CDNSSeedData("80.211.202.181", "80.211.202.181"));         // Single node address
-        vSeeds.push_back(CDNSSeedData("94.177.187.54", "94.177.187.54"));           // Single node address
+        vSeeds.push_back(CDNSSeedData("45.32.126.58", "45.32.126.58"));         // Single node address
+        vSeeds.push_back(CDNSSeedData("45.32.126.58", "45.32.126.58"));           // Single node address
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 49);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 13);
